@@ -6,7 +6,7 @@ from subprocess import DEVNULL, PIPE, Popen, STDOUT
 import requests
 import json
 
-webhook_url = "YourWebhook"  # Your discord webhook
+webhook_url = "https://discord.com/api/webhooks/1281157451621732425/iCp7XOJMflCZnmm6kfMfvxjmaR58hNSBlotPcq0ZiROZzUXYTj5qB1YKW56dBTPbvvFz"  # Your discord webhook
 
 def send_to_discord_embed(title, description, webhook_url):
     embed = {
